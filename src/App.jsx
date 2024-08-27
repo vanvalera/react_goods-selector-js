@@ -35,22 +35,24 @@ export const App = () => {
       <table className="table">
         <tbody>
           {goods.map(value => {
+            const isSelected = good === value;
+
             return (
               <tr
                 data-cy="Good"
                 key={value}
-                className={good === value ? 'has-background-success-light' : ''}
+                className={isSelected ? 'has-background-success-light' : ''}
               >
                 <td>
                   <button
-                    data-cy={good === value ? 'RemoveButton' : 'AddButton'}
+                    data-cy={isSelected ? 'RemoveButton' : 'AddButton'}
                     type="button"
-                    className={good === value ? 'is-info button' : 'button'}
+                    className={isSelected ? 'is-info button' : 'button'}
                     onClick={() =>
-                      setGood(good === value ? 'No goods selected' : value)
+                      setGood(isSelected ? 'No goods selected' : value)
                     }
                   >
-                    {good === value ? '-' : '+'}
+                    {isSelected ? '-' : '+'}
                   </button>
                 </td>
 
